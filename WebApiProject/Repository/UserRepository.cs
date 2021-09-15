@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using WebApiProject.Context;
 using WebApiProject.DTOs;
+using WebApiProject.enums;
 using WebApiProject.Models;
 using WebApiProject.Repository.Interfaces;
 
@@ -35,7 +37,7 @@ namespace WebApiProject.Repository
         public async Task<UserRequestDTO> ValidateUser(UserRequestDTO user)
         {
             var userEntity = await GetUserByUsername(user.Username);
-            if (userEntity.Password == user.Password)
+            if (BCrypt.Net.BCrypt.EnhancedVerify(user.Password, userEntity.Password))
             {
                 return new UserRequestDTO
                 {
@@ -64,7 +66,7 @@ namespace WebApiProject.Repository
             await _context.Users.AddAsync(new User
             {
                 Username = user.Username,
-                Password = user.Password,
+                Password = BCrypt.Net.BCrypt.EnhancedHashPassword(user.Password),
                 Role = user.Role
             });
             await _context.SaveChangesAsync();
@@ -91,7 +93,7 @@ namespace WebApiProject.Repository
             return new UserRequestDTO()
             {
                 Username = user.Username,
-                Password = user.Password,
+                Password = BCrypt.Net.BCrypt.EnhancedHashPassword(user.Password),
                 Role = user.Role
             };
         }

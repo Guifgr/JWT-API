@@ -6,33 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832a9aa2-1253-457b-86f3-faa59d5b92da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/dictionaries" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Context/ProjectContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/DTOs/UserRequestDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/DTOs/UserRequestWithRoleDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Migrations/20210914012109_CreateUsers.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Migrations/20210914012109_CreateUsers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Migrations/ProjectContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Repository/Interfaces/IUserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Repository/UserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Services/TokenService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Settings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/WebApiProject.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApiProject/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApiProject/enums/Roles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApiProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApiProject/DTOs/UserRequestDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApiProject/DTOs/UserRequestDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApiProject/Repository/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApiProject/Repository/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApiProject/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApiProject/Services/TokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApiProject/WebApiProject.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApiProject/WebApiProject.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29a328843bdc4762af89c8fdc084c4d68f5778/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1y6pj3piR28VS3zIxTLrqqxwMrz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -110,7 +92,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="UnknownFeatures">
     <option featureType="com.jetbrains.rider.solution.reference" implementationName="Microsoft.AspNetCore.Diagnostics" />
@@ -407,34 +389,9 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WebApiProject/Controllers/AuthController.cs</url>
-          <line>48</line>
-          <properties documentPath="C:\Users\guifg\OneDrive\Documentos\GitHub\WebApiProject\WebApiProject\Controllers\AuthController.cs" initialLine="47" containingFunctionPresentation="method 'Signup'">
-            <startOffsets>
-              <option value="1516" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1561" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WebApiProject/Controllers/AuthController.cs</url>
-          <line>51</line>
-          <properties documentPath="C:\Users\guifg\OneDrive\Documentos\GitHub\WebApiProject\WebApiProject\Controllers\AuthController.cs" initialLine="50" containingFunctionPresentation="method 'Signup'">
-            <startOffsets>
-              <option value="1607" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1620" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

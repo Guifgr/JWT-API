@@ -1,8 +1,10 @@
-﻿namespace WebApiProject.DTOs
+﻿using WebApiProject.enums;
+
+namespace WebApiProject.DTOs
 {
     public class UserRequestDTO : UserRequestWithouRoleDTO
     {
-        public string Role { get; set; }
+        public Roles Role { get; set; }
         
         
     }
