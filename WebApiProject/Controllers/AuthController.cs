@@ -64,12 +64,12 @@ namespace WebApiProject.Controllers
 
         [HttpGet]
         [Route("employee")]
-        [Authorize(Roles = "employee,manager")]
+        [Authorize(Roles = "Employee,Manager")]
         public string Employee() => "Funcionário";
 
         [HttpGet]
         [Route("manager")]
-        [Authorize(Roles = "manager")]
+        [Authorize(Roles = "Manager")]
         public string Manager() => "Gerente";
     }
 }
