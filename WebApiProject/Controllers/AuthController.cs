@@ -21,7 +21,7 @@ namespace WebApiProject.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<string>> login([FromBody]UserRequestWithouRoleDTO model)
+        public async Task<ActionResult<string>> login([FromBody]UserRequestWithouRoleDto model)
         {
             var userEntity = await _userRepository.GetUserByUsername(model.Username);
             userEntity.Password = model.Password;
@@ -40,7 +40,7 @@ namespace WebApiProject.Controllers
         
         [HttpPost]
         [Route("signup")]
-        public async Task<ActionResult<string>> Signup([FromBody]UserRequestDTO model)
+        public async Task<ActionResult<string>> Signup([FromBody]UserRequestDto model)
         {
             // Recupera o usuário
             var user = await _userRepository.CreateUser(model);

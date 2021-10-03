@@ -6,10 +6,10 @@ namespace WebApiProject.Repository.Interfaces
 {
     public interface IUserRepository
     {
-        Task<UserRequestDTO> GetUserByUsername(string userName);
-        Task<UserRequestDTO> ValidateUser(UserRequestDTO user);
-        Task<UserRequestDTO> CreateUser(UserRequestDTO user);
-        Task<UserRequestDTO> UpdateUser(UserRequestDTO user);
+        Task<UserRequestDto> GetUserByUsername(string userName);
+        Task<UserRequestDto> ValidateUser(UserRequestDto user);
+        Task<UserRequestDto> CreateUser(UserRequestDto user);
+        Task<UserRequestDto> UpdateUser(UserRequestDto user);
         Task DeleteUser(string userName);
     }
 }

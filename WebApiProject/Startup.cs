@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -15,9 +16,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using WebApiProject.Context;
 using WebApiProject.Repository;
 using WebApiProject.Repository.Interfaces;
+using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace WebApiProject
 {
@@ -34,7 +39,28 @@ namespace WebApiProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddControllers();
+            
+            
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                DateFormatString = "yyyy-MM-dd'T'HH:mm:ss",
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Converters = new List<JsonConverter>
+                {
+                    new StringEnumConverter
+                        {NamingStrategy = new CamelCaseNamingStrategy()}
+                }
+            };
+            
+            services
+                .AddControllers()
+                .AddJsonOptions(opts =>
+                {
+                    var enumConverter = new JsonStringEnumConverter();
+                    opts.JsonSerializerOptions.Converters.Add(enumConverter);
+                });
             
             services.AddDbContext<ProjectContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("Connection")));
@@ -97,6 +123,10 @@ namespace WebApiProject
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiProject v1"));
+
+                using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope();
+                var context = serviceScope?.ServiceProvider.GetRequiredService<ProjectContext>();
+                context?.Database.Migrate();
             }
 
             app.UseCors(x => x

@@ -2,7 +2,7 @@
 
 namespace WebApiProject.DTOs
 {
-    public class UserRequestDTO : UserRequestWithouRoleDTO
+    public class UserRequestDto : UserRequestWithouRoleDto
     {
         public Roles Role { get; set; }
         

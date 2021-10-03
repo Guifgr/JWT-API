@@ -10,7 +10,7 @@ namespace WebApiProject.Services
 {
     public static class TokenService
     {
-        public static string GenerateToken(UserRequestDTO user)
+        public static string GenerateToken(UserRequestDto user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);

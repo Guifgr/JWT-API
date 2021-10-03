@@ -21,11 +21,11 @@ namespace WebApiProject.Repository
             _context = context;
         }
 
-        public async Task<UserRequestDTO> GetUserByUsername(string userName)
+        public async Task<UserRequestDto> GetUserByUsername(string userName)
         {
             return await _context.Users
                 .AsNoTracking()
-                .Select(u => new UserRequestDTO
+                .Select(u => new UserRequestDto
                 {
                     Username = u.Username,
                     Password = u.Password,
@@ -34,12 +34,12 @@ namespace WebApiProject.Repository
                 .FirstOrDefaultAsync(u => u.Username == userName);
         }
 
-        public async Task<UserRequestDTO> ValidateUser(UserRequestDTO user)
+        public async Task<UserRequestDto> ValidateUser(UserRequestDto user)
         {
             var userEntity = await GetUserByUsername(user.Username);
             if (BCrypt.Net.BCrypt.EnhancedVerify(user.Password, userEntity.Password))
             {
-                return new UserRequestDTO
+                return new UserRequestDto
                 {
                     Username = userEntity.Username,
                     Password = userEntity.Password,
@@ -56,7 +56,7 @@ namespace WebApiProject.Repository
                 .FirstOrDefaultAsync(u => u.Username == userName);
         }
 
-        public async Task<UserRequestDTO> CreateUser(UserRequestDTO user)
+        public async Task<UserRequestDto> CreateUser(UserRequestDto user)
         {
             var hasUser = await GetUserByUsername(user.Username);
             if (hasUser != default)
@@ -70,7 +70,7 @@ namespace WebApiProject.Repository
                 Role = user.Role
             });
             await _context.SaveChangesAsync();
-            return new UserRequestDTO
+            return new UserRequestDto
             {
                 Username = user.Username,
                 Password = user.Password,
@@ -78,7 +78,7 @@ namespace WebApiProject.Repository
             };
         }
 
-        public async Task<UserRequestDTO> UpdateUser(UserRequestDTO user)
+        public async Task<UserRequestDto> UpdateUser(UserRequestDto user)
         {
             var userEntity = await GetUserByUsernameTracking(user.Username);
             
@@ -90,7 +90,7 @@ namespace WebApiProject.Repository
             userEntity.Username = user.Username;
             userEntity.Password = user.Password;
             await _context.SaveChangesAsync();
-            return new UserRequestDTO()
+            return new UserRequestDto()
             {
                 Username = user.Username,
                 Password = BCrypt.Net.BCrypt.EnhancedHashPassword(user.Password),
