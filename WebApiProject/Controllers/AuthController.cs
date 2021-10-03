@@ -13,10 +13,12 @@ namespace WebApiProject.Controllers
     public class AuthController : Controller
     {
         public readonly IUserRepository _userRepository;
+        public readonly ITokenService _TokenService;
 
-        public AuthController(IUserRepository userRepository)
+        public AuthController(IUserRepository userRepository, ITokenService tokenService)
         {
             _userRepository = userRepository;
+            _TokenService = tokenService;
         }
 
         [HttpPost]
@@ -32,7 +34,7 @@ namespace WebApiProject.Controllers
                 return NotFound(new { message = "Usuário ou senha inválidos" });
 
             // Gera o Token
-            var token = TokenService.GenerateToken(user);
+            var token = _TokenService.GenerateToken(user);
 
             // Retorna os dados
             return token;
@@ -46,7 +48,7 @@ namespace WebApiProject.Controllers
             var user = await _userRepository.CreateUser(model);
 
             // Gera o Token
-            var token = TokenService.GenerateToken(user);
+            var token = _TokenService.GenerateToken(user);
 
             // Retorna os dados
             return token;

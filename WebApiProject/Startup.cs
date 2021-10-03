@@ -22,6 +22,7 @@ using Newtonsoft.Json.Serialization;
 using WebApiProject.Context;
 using WebApiProject.Repository;
 using WebApiProject.Repository.Interfaces;
+using WebApiProject.Services;
 using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace WebApiProject
@@ -39,6 +40,7 @@ namespace WebApiProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITokenService, TokenService>();
             
             
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
@@ -65,7 +67,7 @@ namespace WebApiProject
             services.AddDbContext<ProjectContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("Connection")));
 
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("Secret").Value);
             services.AddAuthentication(x =>
                 {
                     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
